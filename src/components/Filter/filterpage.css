@@ -1,0 +1,142 @@
+/* filter container css */
+.filter_page{
+    display:flex;
+    flex-direction:row;
+}
+
+.filter_cont{
+    position:sticky;
+    top:30px;
+    width:25%;
+    height:auto;
+    padding:30px 10px;
+    background-color: white;
+}
+.filtered_products_cont{
+    width:75%;
+}
+.filtered_products_cont a{
+    color:black !important;
+    text-decoration: none;
+}
+.down_icon{
+    width:50px;
+    top:20px;
+    left:75%;
+}
+.filter_options{
+    font-size:12px;
+    visibility: hidden;
+    height:0px;
+    opacity:0;
+}
+
+.filter_heading{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    letter-spacing:0.2em;
+}
+#Category:checked ~ .filter_options,
+#Concern:checked ~ .filter_options,
+#Ingredient:checked ~ .filter_options,
+#Product_Type:checked ~ .filter_options,
+#Price:checked ~ .filter_options
+{
+    visibility: visible;
+    height:auto;
+    opacity:1;
+    transition:all 1s ease;
+}
+.filter_links{
+    background-color: white;
+    line-height: 60px;
+    padding:10%;
+    height:100vh;
+    overflow:scroll;
+    transition:all 1s ease-in-out;
+}
+.filter_type{
+        position:relative;   
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        letter-spacing:0.2em;
+        font-weight:90px;
+        font-size:13px;      
+}
+.down_icon{
+      position:absolute;
+      width:20px;
+      height:20px;
+      left:75%;
+      transition: all 0.4s ease-in-out;
+}
+#Category:checked ~ label .down_icon,
+#Concern:checked ~ label .down_icon,
+#Ingredient:checked ~ label .down_icon,
+#Product_Type:checked ~ label .down_icon,
+#Price:checked ~ label .down_icon
+{
+    transform: rotate(180deg);
+}
+.filter_type input[type="checkbox"]{
+    visibility:hidden;
+    display:none;
+}
+.mobile_filter{
+    display:none;
+}
+.cancel_filter{
+    display:none;
+}
+#filter_button,#cancel_filter{
+    display:none;
+}
+
+@media (max-width:900px){
+    .filtered_products_cont{
+        width:100%;
+        padding:0% 15%;
+    }
+    .filter_cont{
+        display:none;
+        left:-100%;
+
+    }
+    .mobile_filter{
+      display:block;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-left:50%;
+      
+      transform: translate(-50%);
+    }
+    .mobile_filter div{
+       padding:5px 15px;
+       border:1px solid black ;
+       cursor:pointer;
+    }
+    .mobile_filter div i{
+       font-size:13px;
+    }
+    #filter_button:checked  ~ .filter_cont{
+        position:absolute;
+        z-index:99;
+        top:0;
+        width:100%;
+        left:0;
+        display:block;
+        z-index:20;     
+    }
+    
+    .cancel_filter{
+        display:block;
+        position:absolute;
+        font-size:25px;
+        right:5%;
+        top:10px;
+        cursor:pointer;
+    }
+    #cancel_filter:checked ~ .filter_cont{
+      left:-100%;
+
+    }
+}
