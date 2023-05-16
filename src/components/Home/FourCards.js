@@ -11,7 +11,7 @@ function FourCards({heading,images}) {
             return(
                 <div className="col-md-3 col-6 mb-3" key={index}>
                 <Link to="/">
-                  <img src={item} alt=""/>
+                  <img  src={item} alt=""/>
                 </Link>
               </div>  
             )

@@ -6,8 +6,8 @@ function Coupon() {
         document.querySelector(".main_page").style.opacity="1"
     }
   return (
-<div className="coupon">
-  <img src="./assets/coupan_img.jpg" className="coupon_image" alt=""/>
+<div className="coupon" >
+  <img src="./assets/coupun_bg.jpg" className="coupon_image" alt=""/>
   <i className="close_button fas fa-times" onClick={closeCoupon} />
   <div className="coupon_text ">
     <h1>Get glowing with upto Rs 500 OFF</h1>
