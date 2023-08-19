@@ -59,8 +59,8 @@ function FilterPage() {
     }
     fetchData();
  },[])
+
   async function filterCategories(event,id){
-    
     if(id){
       if(event.target.checked){
         await axios.get(`https://wowapi.onrender.com/productinfo/categories/${id}`)
@@ -157,7 +157,9 @@ function FilterPage() {
       <div className="row">
         {filteredproducts?filteredproducts.map((item)=>{
           return (
-            <ProductCard item={item}/>
+            <React.Fragment  key={item.product_id}>
+              <ProductCard item={item}/>
+            </React.Fragment>
             )
          }):<h1>loading</h1>}
       </div>  
