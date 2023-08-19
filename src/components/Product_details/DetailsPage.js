@@ -6,7 +6,7 @@ import './detailspage.css'
 import { CartState } from '../context/Context';
 
 function DetailsPage() {
-    const {state:dispatch} = CartState();
+    const {dispatch} = CartState();
     const [product,setProduct] = useState(null);
      const {id} = useParams();
      useEffect(()=>{
@@ -50,8 +50,11 @@ function DetailsPage() {
                 <button style={{fontWeight:"600"}} className="btn btn-warning text-dark mt-3 mt-md-0 ml-md-5 col-sm-12 col-md-5">BUY NOW</button>
             </div>
 
-         </div>:
-         <p></p>
+         </div>
+            :
+        <div style={{display:"flex",justifyContent:"center"}}>
+             <img  src='../assets/spinner-icon-gif-21.jpg' alt="Loading" />
+        </div>
        }
     </>
   )
