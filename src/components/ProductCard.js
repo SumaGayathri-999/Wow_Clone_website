@@ -4,7 +4,7 @@ import Rating from "./Rating"
 import {Link} from 'react-router-dom';
 
 function Product_Card({item}) {
-    const {state:{products,cart},dispatch} = CartState();
+    const {dispatch} = CartState();
 
   return (
     <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-3 column">
