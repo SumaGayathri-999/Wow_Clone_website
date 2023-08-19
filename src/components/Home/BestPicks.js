@@ -14,9 +14,9 @@ function BestPicks() {
         {products.length>0 ? <><div className="row mb-3">
           {products.slice(0,8).map((item,product_id)=>{
             return(
-             <>
-             <ProductCard item={item} key={product_id}/>
-             </>
+             <React.Fragment key={product_id}>
+             <ProductCard item={item} />
+             </React.Fragment>
             )
           })}
           
