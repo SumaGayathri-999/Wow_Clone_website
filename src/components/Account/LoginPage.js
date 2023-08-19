@@ -23,10 +23,9 @@ function LoginPage() {
       },
       body:JSON.stringify(userinfo)
     })
-  .then((res)=>res.json())  //we should not write this as .then((res)=>{res.json()})
+  .then((res)=>res.json())  //we should not write this as .then((res)=>{res.json()}) because it should return json format of response. So we can write it as .then((res)=>{return res.json()})
   .then((data)=>{
     if(data.auth === false){
-      console.log(data.token);
        setUserinfo({...userinfo,message:data.token});
     }
     else{
@@ -48,7 +47,7 @@ function LoginPage() {
     <div style={{color:"red"}}>{userinfo.message}</div>
     <button className="sign_In_Button col-12 mt-5" onClick={handleSubmit}>SIGN IN</button>
     <Link to="/createAccount" className="ca">
-      <h5 className="text-center mt-2 ">Create Account</h5>
+        <h5 className="text-center mt-2 ">Create Account</h5>
     </Link>
   </div>
 </>
