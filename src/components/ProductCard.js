@@ -4,7 +4,7 @@ import Rating from "./Rating"
 import {Link} from 'react-router-dom';
 
 function Product_Card({item}) {
-    const {dispatch} = CartState();
+    const {state:{products,cart},dispatch} = CartState();
 
   return (
     <div className="col-12 col-sm-6 col-md-6 col-lg-3 mb-3 column">
@@ -18,7 +18,7 @@ function Product_Card({item}) {
         />
       </Link>
       <div className="card-body">
-      <Link to="/productdetails">
+      <Link to={`/productdetails/${item.product_id}`}>
           <h5 className="card-title text-center product_info">
             {item.product_name}
           </h5>
