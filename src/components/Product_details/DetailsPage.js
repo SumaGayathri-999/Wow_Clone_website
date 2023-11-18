@@ -6,7 +6,7 @@ import './detailspage.css'
 import { CartState } from '../context/Context';
 
 function DetailsPage() {
-    const {dispatch} = CartState();
+    const {state:dispatch} = CartState();
     const [product,setProduct] = useState(null);
      const {id} = useParams();
      useEffect(()=>{
@@ -18,6 +18,9 @@ function DetailsPage() {
         }
        
      },[id])
+     useEffect(()=>{
+      window.scrollTo(0,0);
+  },[])
   return (
     <>
        {product?
@@ -50,11 +53,8 @@ function DetailsPage() {
                 <button style={{fontWeight:"600"}} className="btn btn-warning text-dark mt-3 mt-md-0 ml-md-5 col-sm-12 col-md-5">BUY NOW</button>
             </div>
 
-         </div>
-            :
-        <div style={{display:"flex",justifyContent:"center"}}>
-             <img  src='../assets/spinner-icon-gif-21.jpg' alt="Loading" />
-        </div>
+         </div>:
+         <p></p>
        }
     </>
   )
