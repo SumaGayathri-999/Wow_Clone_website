@@ -50,6 +50,8 @@ function FilterPage() {
   
   
   useEffect(()=>{
+       window.scrollTo(0,0);
+
        const fetchData = async ()=>{
        const [categoryOptions,ingredientsOptions,concernOptions,productTypeOptions] = await Promise.all([axios.get("https://wowapi.onrender.com/productinfo/categories_list"), axios.get("https://wowapi.onrender.com/productinfo/ingredients_list"), axios.get("https://wowapi.onrender.com/productinfo/concerns_list"),axios.get("https://wowapi.onrender.com/productinfo/product_type_list")])
        setCategories(categoryOptions.data);
@@ -59,8 +61,8 @@ function FilterPage() {
     }
     fetchData();
  },[])
-
   async function filterCategories(event,id){
+    
     if(id){
       if(event.target.checked){
         await axios.get(`https://wowapi.onrender.com/productinfo/categories/${id}`)
@@ -157,9 +159,7 @@ function FilterPage() {
       <div className="row">
         {filteredproducts?filteredproducts.map((item)=>{
           return (
-            <React.Fragment  key={item.product_id}>
-              <ProductCard item={item}/>
-            </React.Fragment>
+            <ProductCard key={item.id} item={item}/>
             )
          }):<h1>loading</h1>}
       </div>  
