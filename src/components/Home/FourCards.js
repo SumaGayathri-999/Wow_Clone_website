@@ -10,7 +10,7 @@ function FourCards({heading,images}) {
           {images.map((item,index)=>{
             return(
                 <div className="col-md-3 col-6 mb-3" key={index}>
-                <Link to="/">
+                <Link to="/filterpage">
                   <img  src={item} alt=""/>
                 </Link>
               </div>  
