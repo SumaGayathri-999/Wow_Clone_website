@@ -3,7 +3,9 @@ import React from 'react'
 function Coupon() {
     function closeCoupon(){
         document.querySelector(".coupon").style.display="none";
-        document.querySelector(".main_page").style.opacity="1"
+        document.querySelector(".main_page").style.opacity="1";
+        document.querySelector("#root").style.position ="static";
+
     }
   return (
 <div className="coupon" >
