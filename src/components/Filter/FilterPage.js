@@ -14,6 +14,7 @@ function FilterPage() {
   const [ ingredients, setIngredients ] = useState([]);
   const [ productTypes, setProductTypes ] = useState([]);
   const [ filteredproducts, setFilteredProducts ] = useState(products);
+  const [loading,setLoading] = useState(true);
   const location = useLocation();
   var searchword;
   
@@ -60,47 +61,60 @@ function FilterPage() {
        setProductTypes(productTypeOptions.data);
     }
     fetchData();
+    setLoading(false);
+
  },[])
   async function filterCategories(event,id){
-    
+    setLoading(true);
     if(id){
       if(event.target.checked){
         await axios.get(`https://wowapi.onrender.com/productinfo/categories/${id}`)
-        .then((res)=>{setFilteredProducts(res.data)})
+        .then((res)=>{setFilteredProducts(res.data);setLoading(false);
+        })
       }
     }
   }
   async function filterConcern(event,id){
+    setLoading(true);
     if(id){
       if(event.target.checked){
         await axios.get(`https://wowapi.onrender.com/productinfo/concern/${id}`)
-        .then((res)=>{setFilteredProducts(res.data)})
+        .then((res)=>{setFilteredProducts(res.data);setLoading(false);
+        })
       }
     }
   }
   async function filterIngredients(event,id){
+    setLoading(true);
     if(id){
       if(event.target.checked){
         await axios.get(`https://wowapi.onrender.com/productinfo/ingredients/${id}`)
-        .then((res)=>{setFilteredProducts(res.data)})
+        .then((res)=>{setFilteredProducts(res.data);setLoading(false);
+        })
       }
     }
   }
   async function filterProductTypes(event,id){
+    setLoading(true);
     if(id){
       if(event.target.checked){
         await axios.get(`https://wowapi.onrender.com/productinfo/Product_types/${id}`)
-        .then((res)=>{setFilteredProducts(res.data)})
+        .then((res)=>{setFilteredProducts(res.data);setLoading(false);
+        })
       }
     }
   }
   async function filterPrice(min,max){
+    setLoading(true);
     await axios.get(`https://wowapi.onrender.com/productinfo/price?min_price=${min}&max_price=${max}`)
-    .then((res)=>{setFilteredProducts(res.data)})
+    .then((res)=>{setFilteredProducts(res.data);setLoading(false);
+    })
   }
   async function AllProducts(){
+    setLoading(true);
      await axios.get("https://wowapi.onrender.com/productinfo/products")
-     .then((res)=>{setFilteredProducts(res.data)})
+     .then((res)=>{setFilteredProducts(res.data);setLoading(false);
+     })
 
   }
  
@@ -111,7 +125,7 @@ function FilterPage() {
               <div className="filter_button" ><i className="fa-solid fa-filter mr-2"></i>FILTER</div>
           </label>
     </div>
-    <div className="filter_page mt-5">
+    <div className="filter_page">
           <input type="radio" name="slide_filter" id="filter_button"/>
           <input type="radio" name="slide_filter" id="cancel_filter" /> 
           <div className="filter_cont ">
@@ -157,11 +171,11 @@ function FilterPage() {
     <div className="filtered_products_cont">
       <h1 className="text-center mb-4" style={{fontWeight:"300"}}>BEST SELLING PRODUCTS</h1>
       <div className="row">
-        {filteredproducts?filteredproducts.map((item)=>{
+        {!loading?filteredproducts.map((item)=>{
           return (
             <ProductCard key={item.id} item={item}/>
             )
-         }):<h1>loading</h1>}
+         }):<img src="./assets/spinner-icon-gif-21.jpg" style={{marginLeft:"45%"}} alt="Loading"></img>}
       </div>  
     </div>
 </div>
