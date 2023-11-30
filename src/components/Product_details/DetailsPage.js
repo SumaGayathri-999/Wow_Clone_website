@@ -6,7 +6,7 @@ import './detailspage.css'
 import { CartState } from '../context/Context';
 
 function DetailsPage() {
-    const {state:dispatch} = CartState();
+    const {dispatch} = CartState();
     const [product,setProduct] = useState(null);
      const {id} = useParams();
      useEffect(()=>{
