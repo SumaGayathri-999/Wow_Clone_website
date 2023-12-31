@@ -369,7 +369,7 @@ a{
 
 .two_col_banner img{
   width:100%;
-  object-fit:fill;
+  object-fit:cover;
   overflow:hidden;
 }
 
